@@ -4,11 +4,13 @@ if(!function_exists('preschooltheme_setup')){
 
     function preschooltheme_setup()
     {
+        # Agrego Menus
         register_nav_menus( array(
             'mainmenu-left'=>'Menu Principal izquierda',
             'mainmenu-right'=>'Menu Principal derecha'
         ) );
-        // Custom logo.
+
+        # Custom logo.
         $logo_width  = 120;
         $logo_height = 90;
         add_theme_support(
@@ -20,7 +22,32 @@ if(!function_exists('preschooltheme_setup')){
                 'flex-width'  => true,
             )
         );
-        show_admin_bar( true );
+        add_theme_support( 'post-thumbnails' );
+        set_post_thumbnail_size( 900, 400, true );
+
+        # Agregando Sidebar
+        register_sidebar(
+            array(
+                'id'            => 'primary',
+                'name'          => 'Primary Sidebar',
+                'description'   => 'Bloque lateral en la derecha',
+                'before_widget' => '<div id="%1$s" class="widget %2$s">',
+                'after_widget'  => '</div>',
+                'before_title'  => '<h4 class="widget-title">',
+                'after_title'   => '</h3>',
+            )
+        );
+        register_sidebar(
+            array(
+                'id'            => 'home-content',
+                'name'          => 'Home content',
+                'description'   => 'Zona para widgets en la portada',
+                'before_widget' => '<div id="%1$s">',
+                'after_widget'  => '</div>',
+                'before_title'  => '',
+                'after_title'   => '',
+            )
+        );
 
 
     }
@@ -39,3 +66,8 @@ function special_nav_class ($classes, $item) {
   }
   return $classes;
 }
+
+// Search Widget
+include_once(get_template_directory() . '/includes/widgets/searchWidget.php');
+// Slider Widget
+include_once(get_template_directory() . '/includes/widgets/sliderWidget.php');

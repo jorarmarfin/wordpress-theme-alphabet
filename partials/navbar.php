@@ -5,7 +5,7 @@
         <i class="fa fa-bars"></i>
         </button>
         <div class="navbar-brand-centered page-scroll">
-            <a href="#page-top"><img src="<?=get_template_directory_uri()?>/assets/img/logo.png"  alt=""></a>
+            <a href="/"><img src="<?=get_template_directory_uri()?>/assets/img/logo.png"  alt=""></a>
         </div>
     </div>
     
